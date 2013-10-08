@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	<groupId>com.hereiam.server</groupId>
+	<artifactId>hereiam-server</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>hereiam-webservice</artifactId>
+	<packaging>war</packaging>
+	
+	<properties>
+    	<jetty.version>6.1.10</jetty.version>
+	</properties>
+	
+	<repositories>
+	   <repository>
+		  <id>JBoss repository</id>
+		  <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+	   </repository>
+	</repositories>  
+  
+	<build>
+  		<plugins>
+  			<plugin>
+		        <groupId>org.mortbay.jetty</groupId>
+		        <artifactId>maven-jetty-plugin</artifactId>
+		        <version>${jetty.version}</version>
+		        <configuration>
+		                <scanIntervalSeconds>10</scanIntervalSeconds>
+		                <stopKey>foo</stopKey>
+		                <stopPort>9999</stopPort>
+		        </configuration>
+		        <executions>
+	                <execution>
+	                        <id>start-jetty</id>
+	                        <phase>pre-integration-test</phase>
+	                        <goals>
+	                                <goal>run</goal>
+	                        </goals>
+	                        <configuration>
+	                                <scanIntervalSeconds>0</scanIntervalSeconds>
+	                                <daemon>true</daemon>
+	                        </configuration>
+	                </execution>
+	                <execution>
+	                        <id>stop-jetty</id>
+	                        <phase>post-integration-test</phase>
+	                        <goals>
+	                                <goal>stop</goal>
+	                        </goals>
+	                </execution>
+		        </executions>
+			</plugin>
+  		</plugins>
+  	</build>  
+  
+
+  	<dependencies>
+  		<dependency>
+  		    <groupId>com.hereiam.server</groupId>
+    		<artifactId>hereiam-persistence</artifactId>
+    		<version>${project.version}</version>
+  		</dependency>
+		<dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-web</artifactId>
+  			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-webmvc</artifactId>
+  			<version>${org.springframework.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.9.9</version>
+		</dependency>
+		
+	</dependencies>
+  
+</project>

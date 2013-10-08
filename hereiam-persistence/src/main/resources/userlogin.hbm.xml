@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hereiam.persistence.userLogin.model.UserLogin" table="user_login">
+		<id name="email" type="string" column="email"/>
+		<property name="passwrd" type="string" column="passwrd" />
+		<property name="login" type="string" column="login" />
+	</class>
+</hibernate-mapping>
