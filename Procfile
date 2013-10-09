@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar hereiam-webservice/target/dependency/jetty-runner.jar --port $PORT hereiam-webservice/target/*.war
+web: java $JAVA_OPTS -DDATABASE_URL=$DATABASE_URL -jar hereiam-webservice/target/dependency/jetty-runner.jar --port $PORT hereiam-webservice/target/*.war
